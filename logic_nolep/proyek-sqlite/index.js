@@ -31,7 +31,7 @@ async function main() {
                 FOREIGN KEY (IDKaryawan) REFERENCES Karyawan (IDKaryawan)
             );
         `);
-        console.log('✅ Tabel berhasil dibuat.');
+        console.log('Tabel berhasil dibuat.');
 
         await dbExec('BEGIN');
         
@@ -51,7 +51,7 @@ async function main() {
         await dbRun('INSERT INTO Pekerjaan (NamaPekerjaan, IDProyek, IDKaryawan) VALUES (?, ?, ?)', ['Pekerjaan 5', 103, 1]);
 
         await dbExec('COMMIT');
-        console.log('✅ Data berhasil dimasukan.');
+        console.log('Data berhasil dimasukan.');
 
         const karyawan = await dbAll('SELECT * FROM Karyawan');
         console.log('--- Data Karyawan ---');
@@ -67,11 +67,11 @@ async function main() {
 
     } catch (error) {
         if (error.message.includes('transaction')) await dbExec('ROLLBACK');
-        console.error('❌ Terjadi kesalahan:', error.message);
+        console.error('Terjadi kesalahan:', error.message);
     } finally {
         db.close((err) => {
             if (err) console.error(err.message);
-            else console.log('🔌 Koneksi database ditutup.');
+            else console.log('Koneksi database ditutup.');
         });
     }
 }
