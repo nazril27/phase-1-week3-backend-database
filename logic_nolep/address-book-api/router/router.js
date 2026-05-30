@@ -12,15 +12,15 @@ router
 router.put("/contact/:id", contactController.updateContact);
 router.delete("/contact/:id", contactController.deleteContact);
 
-// router
-//   .route("/groups")
-//   .get(groupController.getGroups)
-//   .post(groupController.createGroups);
-// router.put("/groups/:id", groupController.updateGroups);
-// router.delete("/groups/:id", groupController.deleteGroups);
+router
+  .route("/groups")
+  .get(groupController.getGroups)
+  .post(groupController.createGroups);
+router.put("/groups/:id", groupController.updateGroups);
+router.delete("/groups/:id", groupController.deleteGroups);
 
-// router.post("/contactGroup", contactGroupController.createContactGroup);
-// router.put("/contactGroup/:id", contactGroupController.updateContactGroup);
-// router.delete("/contactGroup/:id", contactGroupController.deleteContactGroup);
+router.post("/contactGroup", contactGroupController.createContactGroup);
+router.put("/contactGroup/:id", contactGroupController.updateContactGroup);
+router.delete("/contactGroup/:id", contactGroupController.deleteContactGroup);
 
 module.exports = router;
