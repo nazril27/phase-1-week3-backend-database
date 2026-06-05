@@ -54,10 +54,10 @@ class Contact {
     static show() {
         return new Promise((resolve, reject) => {
             db.all(`SELECT c.id ID, c.name Name, c.company Company, 
-                g.groupName "Groups", c.email Email, c.phoneNumber "Phone Number"
+                g.groupName "In Groups", c.email Email, c.phoneNumber "Phone Number"
                 FROM Contact c
                 LEFT JOIN GroupContact gc ON c.id = gc.ContactId
-                LEFT JOIN Groups g ON gc.GroupId = g.id 
+                LEFT JOIN Groups g ON gc.GroupId = g.id ORDER BY Name
                 `, (err, rows) => {
                     if (err) {
                         reject(err.message);

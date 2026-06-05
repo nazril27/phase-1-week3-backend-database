@@ -3,7 +3,11 @@ const db = require('../connection/connection');
 class Contact {
     static getContact() {
         return new Promise((resolve, reject) => {
-            const query = 'SELECT * FROM Contact';
+            const query = `SELECT c.id ID, c.name Name, c.company Company, 
+                g.groupName "In Groups", c.email Email, c.phoneNumber "Phone Number"
+                FROM Contact c
+                LEFT JOIN GroupContact gc ON c.id = gc.ContactId
+                LEFT JOIN Groups g ON gc.GroupId = g.id ORDER BY Name`;
             db.all(query, [], (err, rows) => {
                 if (err) reject(err);
                 else resolve(rows);

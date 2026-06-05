@@ -2,7 +2,10 @@ const db = require('../connection/connection');
 
 class Group {
     static get() {
-        const query = `SELECT * FROM Groups`;
+        const query = `SELECT g.id AS ID, g.groupName AS "Group", c.name AS Member, c.company AS "Member Company" 
+                FROM Groups g
+                LEFT JOIN GroupContact gc ON g.id = gc.GroupId
+                LEFT JOIN Contact c ON gc.ContactId = c.id`;
         return new Promise((resolve, reject) => {
             db.all(query, [], function(err, rows) {
                 if (err) reject(err);

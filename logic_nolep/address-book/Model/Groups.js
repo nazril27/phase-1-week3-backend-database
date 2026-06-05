@@ -46,10 +46,10 @@ class Groups {
 
     static show() {
         return new Promise((resolve, reject) => {
-            db.all(`SELECT g.id AS ID, g.groupName AS "Group", c.name AS Member, c.company AS Company 
+            db.all(`SELECT g.id AS ID, g.groupName AS "Group", c.name AS Member, c.company AS "Member Company" 
                 FROM Groups g
                 LEFT JOIN GroupContact gc ON g.id = gc.GroupId
-                LEFT JOIN Contact c ON gc.ContactId = c.id `,
+                LEFT JOIN Contact c ON gc.ContactId = c.id`,
             (err, data) => {
                 if (err) {
                     reject(err);
